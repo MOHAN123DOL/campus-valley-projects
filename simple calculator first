@@ -10,7 +10,7 @@ elif choice==2:
 elif choice==3:
    print("The answer will be :",num1*num2)
 elif choice==4:
-   print("The answer will be :",num1/num2)
+   print("The answer will be :",num1//num2)
 elif choice==5:
    print("The answer will be :",num1%num2)
 else:
