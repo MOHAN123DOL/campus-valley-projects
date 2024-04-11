@@ -1,0 +1,17 @@
+print("welcome to calculator give numbers only")   #to give user information
+num1=int(input("enter the first number :"))
+num2=int(input("enter the second number :"))
+print(" if addition press 1 \n if subtraction press 2\n if multiple press 3\n if divide press 4\n if modulo divide press 5")
+choice=int(input("enter your choice :")) #give route to operation
+if choice==1:  #conditional statement are done
+   print("The answer will be :",num1+num2)   #its return the answer without using another variable
+elif choice==2:
+   print("The answer will be :",num1-num2)
+elif choice==3:
+   print("The answer will be :",num1*num2)
+elif choice==4:
+   print("The answer will be :",num1/num2)
+elif choice==5:
+   print("The answer will be :",num1%num2)
+else:
+   print("you enter wrong try again")
