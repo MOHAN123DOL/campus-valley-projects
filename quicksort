@@ -1,0 +1,14 @@
+def quicksort(lists):
+    if len(lists)<=1:
+        return lists
+
+    else:
+        pivot = lists[0]
+        left = [x for x in lists[1:] if x < pivot]
+        right= [x for x in lists[1:] if x >=pivot]
+        return quicksort(left) + [pivot] + quicksort(right)
+
+lists=list(map(int,input().split()))
+print("original lists is ",lists)
+answer=quicksort(lists)
+print(answer)
