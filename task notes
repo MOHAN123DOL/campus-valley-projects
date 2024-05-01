@@ -1,0 +1,43 @@
+def is_add():
+    a=[]
+    task=input("Enter the task name")
+    taskd=input("Enter the task detail")
+    a.append(task)
+    a.append(taskd)
+    return a,print("your created")
+print("Welcome to task manager\nyou want to create or update or view or exit a task say\nyes or no")
+choice=input()
+if choice.lower()=="yes":
+    while True:
+        ans=input("enter the operation : ").lower()
+        if ans=="create":
+            ans1=[]
+            ans1=is_add()
+            ans2=list(ans1)
+            print(f"Your task would be{ans1}")
+        elif ans=="update":
+            task = input("Enter the task name")
+            taskd = input("Enter the task detail")
+            ans2.append(task)
+            ans2.append(taskd)
+            print(f"the after delete task details is {ans2}")
+        elif ans=="view":
+            print(f"the task in the lists{ans2}")
+        elif ans=="exit":
+            break
+        else:
+            print("invalid input")
+else:
+    print("Thankyou")
+
+
+
+
+
+
+
+
+
+
+
+
