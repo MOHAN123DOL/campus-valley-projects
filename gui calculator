@@ -1,0 +1,104 @@
+from tkinter import *
+window=Tk()
+window.config(background="white")
+icon=PhotoImage(file="calculator-icon.png.crdownload")
+window.iconphoto(True,icon)
+window.title("calculator")
+entry = Entry(window,width=45,borderwidth=4)
+entry.pack()
+entry.grid(row=0,column=0,columnspan=3,padx=10,pady=10)
+def button_click(number):
+    col=entry.get()
+    entry.delete(0,END)
+    entry.insert(0,str(col)+str(number))
+def button_clear():
+    entry.delete(0,END)
+def button_add():
+    a=entry.get()
+    global ans
+    global first
+    first=int(a)
+    ans="add"
+    entry.delete(0,END)
+def button_sub():
+    a=entry.get()
+    global ans
+    global first
+    first=int(a)
+    ans="sub"
+    entry.delete(0,END)
+def button_mul():
+    a=entry.get()
+    global ans
+    global first
+    first=int(a)
+    ans="mul"
+    entry.delete(0,END)
+def button_div():
+    a=entry.get()
+    global ans
+    global first
+    first=int(a)
+    ans="div"
+    entry.delete(0,END)
+def button_modiv():
+    a=entry.get()
+    global ans
+    global first
+    first=int(a)
+    ans="modiv"
+    entry.delete(0,END)
+def equal():
+    second=entry.get()
+    entry.delete(0,END)
+    if ans=="add":
+        entry.insert(0,first+(int(second)))
+    elif ans=="sub":
+        entry.insert(0,first-(int(second)))
+    elif ans=="mul":
+        entry.insert(0,first*(int(second)))
+    elif ans=="div":
+        entry.insert(0,first//(int(second)))
+    elif ans=="modiv":
+        entry.insert(0,first%(int(second)))
+def button():
+    return
+
+button_1=Button(window,text="1",command=lambda: button_click(1),padx=50,pady=40)
+button_2=Button(window,text="2",command=lambda:button_click(2),padx=50,pady=40)
+button_3=Button(window,text="3",command=lambda:button_click(3),padx=50,pady=40)
+button_4=Button(window,text="4",command=lambda:button_click(4),padx=50,pady=40)
+button_5=Button(window,text="5",command=lambda:button_click(5),padx=50,pady=40)
+button_6=Button(window,text="6",command=lambda:button_click(6),padx=50,pady=40)
+button_7=Button(window,text="7",command=lambda:button_click(7),padx=50,pady=40)
+button_8=Button(window,text="8",command=lambda:button_click(8),padx=50,pady=40)
+button_9=Button(window,text="9",command=lambda:button_click(9),padx=50,pady=40)
+button_0=Button(window,text="0",command=lambda:button_click(0),padx=50,pady=40)
+button_add=Button(window,text="+",command=button_add,padx=50,pady=40)
+button_sub=Button(window,text="-",command=button_sub,padx=50,pady=40)
+button_mul=Button(window,text="*",command=button_mul,padx=50,pady=40)
+button_modiv=Button(window,text="%",command=button_modiv,padx=50,pady=40)
+button_div=Button(window,text="/",command=button_div,padx=50,pady=40)
+button_equal=Button(window,text="=",command=equal,padx=50,pady=40)
+button_clear=Button(window,text="clear",command=button_clear,padx=40,pady=40)
+button_welcome=Button(window,text="GOOD DAY",command=button,padx=30,pady=35,bg="red")
+button_welcome.grid(row=6,column=1)
+button_clear.grid(row=6,column=2)
+button_equal.grid(row=6,column=0)
+button_modiv.grid(row=5,column=2)
+button_div.grid(row=5,column=1)
+button_mul.grid(row=5,column=0)
+button_sub.grid(row=4,column=2)
+button_add.grid(row=4,column=1)
+button_1.grid(row=3,column=0)
+button_2.grid(row=3,column=1)
+button_3.grid(row=3,column=2)
+button_4.grid(row=2,column=0)
+button_5.grid(row=2,column=1)
+button_6.grid(row=2,column=2)
+button_7.grid(row=1,column=0)
+button_8.grid(row=1,column=1)
+button_9.grid(row=1,column=2)
+button_0.grid(row=4,column=0)
+
+window.mainloop()
