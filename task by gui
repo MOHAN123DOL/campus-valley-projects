@@ -1,58 +1,56 @@
 from tkinter import *
-from tkinter import messagebox
-ans=[]
-def close_window():
-
-    global entry1
-    global ans
-    entry1 =E.get()
-    ans.append(entry1)
-    global entry2
-    entry2=d.get()
-    ans.append(entry2)
-    E.delete(0,END)
-    d.delete(0, END)
-    mylabel = Label(root, text="your task  saved",fg="black")
-    mylabel.grid()
-    messagebox.showinfo(title="taskname",message=entry1)
-    messagebox.showinfo(title="taskdetails", message=entry2)
-def update():
-    entry2 = d.get()
-    entry1 = E.get()
-    ans.append(entry2)
-    ans.append(entry1)
-    mylabel = Label(root, text="your task updated",fg="red")
-    mylabel.grid()
-    mylabel.pack_forget()
-    E.delete(0, END)
-    d.delete(0, END)
-def view():
-    E.insert(0,entry1)
-    d.insert(0,entry2)
-    mylabel = Label(root, text="your whole task ",fg="green")
-    hehe=",".join(ans)
-
-    mylabel1=Label(root, text=list(hehe),fg="blue")
-    mylabel.grid()
-    mylabel1.grid()
+from tkinter import ttk
+a={}
+def one():
+    global  key
+    global value
+    global a
+    key=task_box.get()
+    value=taskd_box.get()
+    a[key]=value
+    label=Label(window,text="task saved")
+    label.grid()
+    task_box.delete(0,END)
+    taskd_box.delete(0,END)
 
 
-root = Tk()
+def two():
+    ans=task_box.get()
+    ans1=taskd_box.get()
+    a.pop(ans)
+    a[ans] = ans1
+    task_box.delete(0, END)
+    taskd_box.delete(0, END)
 
-label1 = Label(root, bg="#00FFFF")
-E = Entry(root,width=50,borderwidth=5,background="#FF8000",fg="white")
-root.geometry('450x450+500+300')
-d=Entry(root,width=50,borderwidth=5,background="#FF8000",fg="white")
-E.insert(0,"Enter task name")
-d.insert(0,"Enter task details")
-E.place()
-E.grid(row=0,column=0,columnspan=3,padx=10,pady=10)
-d.grid(row=1,column=0,columnspan=3,padx=10,pady=10)
-B = Button(root, text = "save", command = close_window,padx=40,pady=30,background="#FF00FF")
-g = Button(root, text = "update", command = update,padx=30,pady=30,background="#EE00EE")
-f=Button(root, text = "view", command = view,padx=40,pady=30,background="#CD00CD")
-B.grid(row=2,column=0)
-g.grid(row=2,column=1)
-f.grid(row=2,column=2)
+    label2 = Label(window, text="task resaved")
+    label2.grid()
 
-root.mainloop()
+
+
+def three():
+    for x,y in a.items():
+        label=Label(window,text="your task name "+ x)
+        label3=Label(window,text="your task details "+ y)
+        label.grid()
+        label3.grid()
+
+
+window=Tk()
+frame=ttk.Frame(window,width=300,borderwidth=30)
+frame.grid()
+task=Label(frame,text="Enter task ",font=("sans serif",10))
+task_box=Entry(frame,width=50)
+taskd=Label(frame,text="Enter task detail",font=("sans serif",10))
+taskd_box=Entry(frame,width=50)
+save = Button(frame, text = "save", padx=10,pady=10,background="#FF00FF",command=one)
+update = Button(frame, text = "update",padx=10,pady=10,background="#EE00EE",command=two)
+view=Button(frame, text = "view",padx=10,pady=10,background="#CD00CD",command=three)
+
+task.grid(row=1,column=0,pady=20)
+task_box.grid(row=1,column=1,pady=20)
+taskd.grid(row=2,column=0,pady=20)
+taskd_box.grid(row=2,column=1,pady=20)
+save.grid(row=3,column=0,pady=20)
+update.grid(row=3,column=1,pady=20)
+view.grid(row=3,column=2,pady=20)
+window.mainloop()
